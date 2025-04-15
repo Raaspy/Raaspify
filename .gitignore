@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Entorno
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Configs del editor
+.vscode/
+.idea/
+.DS_Store
+
+# Builds
+dist/
+build/
+
+# Coverage (Testing)
+coverage/
