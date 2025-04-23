@@ -72,13 +72,10 @@ git clone https://github.com/tu-usuario/raaspify.git
 npm install
 
 3. **Agrega un archivo .env con:**
-DISCORD_TOKEN=tu_token_aqui
-FFMPEG_PATH=ruta/a/ffmpeg
+- DISCORD_TOKEN=tu_token_aqui
+- FFMPEG_PATH=ruta/a/ffmpeg
 
 4. **Ejecuta el bot:**
 node index.js
 
 ¡Y listo! Usá el comando /play en Discord para disfrutar. 🚀
-
-
-“Donde hay música, hay Raaspify.” 🎶
