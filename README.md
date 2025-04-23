@@ -75,6 +75,9 @@ npm install
 - DISCORD_TOKEN=tu_token_aqui
 - FFMPEG_PATH=ruta/a/ffmpeg
 
+4. **Crea un bot y dale permisos**
+Ingresa al **Discord Developer Portal**, crea una aplicación, añade un bot y copia su token. Luego, invítalo a tu servidor con los permisos adecuados (audio, comandos, etc.). 
+
 4. **Ejecuta el bot:**
 node index.js
 
