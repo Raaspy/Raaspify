@@ -17,7 +17,8 @@ for (const folder of commandFolders) {
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
-		// Set a new item in the Collection with the key as the command name and the value as the exported module
+
+		//* Establece un nuevo elemento en la colección con la clave como el nombre del comando y el valor como el módulo exportado.
 		if ('data' in command && 'execute' in command) {
 			commands.push(command.data.toJSON());
 		} else {
@@ -29,7 +30,7 @@ for (const folder of commandFolders) {
 // Construye y prepara una instancia del módulo REST
 const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 
-// ¡Y despliega tus comandos!
+// Despliega tus comandos.
 (async () => {
 	try {
 		console.log(`Se inició la actualización de ${commands.length} comandos de aplicación (/).`);
@@ -42,7 +43,6 @@ const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 
 		console.log(`Se recargaron correctamente ${data.length} comandos de aplicación (/).`);
 	} catch (error) {
-		// Y por supuesto, asegúrate de capturar y registrar cualquier error
 		console.error(error);
 	}
 })();
