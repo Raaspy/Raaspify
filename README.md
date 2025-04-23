@@ -66,7 +66,7 @@ Si deseas clonar el repositorio y usarlo en tu servidor, estás libre de hacerlo
 ## 🔧 Instalación y Uso
 
 1. **Clona el repositorio:**
-git clone [https://github.com/tu-usuario/raaspify.git](https://github.com/Raaspy/Raaspify.git)
+git clone https://github.com/Raaspy/Raaspify.git
 
 2. **Instala las dependencias:**
 npm install
