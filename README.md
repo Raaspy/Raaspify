@@ -76,9 +76,13 @@ npm install
 - FFMPEG_PATH=ruta/a/ffmpeg
 
 4. **Crea un bot y dale permisos:**
-Ingresa al **Discord Developer Portal**, crea una aplicación, añade un bot y copia su token. Luego, invítalo a tu servidor con los permisos adecuados (audio, comandos, etc.). 
+- Ve al **Discord Developer Portal**.
+- Crea una nueva aplicación.
+- Añade un bot a la aplicación y copia su token.
+- Invita el bot a tu servidor con los permisos necesarios (audio, comandos, etc.).
 
 4. **Ejecuta el bot:**
-node index.js
+- node deploy-commands.js
+- node index.js
 
 ¡Y listo! Usá el comando /play en Discord para disfrutar. 🚀
