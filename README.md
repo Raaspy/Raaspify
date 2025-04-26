@@ -2,7 +2,7 @@
 
 > **“Donde hay música, hay Raaspify. 🎶”**
 
-**Raaspify** es un bot musical desarrollado como proyecto personal, ideal para reforzar habilidades en **JavaScript** y **Node.js**, mientras te hace bailar en tu servidor de Discord.  
+**Raaspify** es un bot musical desarrollado como proyecto personal, ideal para reforzar habilidades en **JavaScript** y **Node.js**.  
 Permite reproducir canciones mediante **URLs o texto**, y si no encuentra una canción, la **descarga automáticamente y la guarda** para futuras sesiones.
 
 ---
