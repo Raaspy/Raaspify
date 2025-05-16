@@ -2,7 +2,7 @@
 
 > **“Donde hay música, hay Raaspify. 🎶”**
 
-**Raaspify** es un bot musical desarrollado como proyecto personal, ideal para reforzar habilidades en **JavaScript** y **Node.js**, mientras te hace bailar en tu servidor de Discord.  
+**Raaspify** es un bot musical desarrollado como proyecto personal, ideal para reforzar habilidades en **JavaScript** y **Node.js**.  
 Permite reproducir canciones mediante **URLs o texto**, y si no encuentra una canción, la **descarga automáticamente y la guarda** para futuras sesiones.
 
 ---
@@ -66,7 +66,7 @@ Si deseas clonar el repositorio y usarlo en tu servidor, estás libre de hacerlo
 ## 🔧 Instalación y Uso
 
 1. **Clona el repositorio:**
-git clone https://github.com/tu-usuario/raaspify.git
+git clone https://github.com/Raaspy/Raaspify.git
 
 2. **Instala las dependencias:**
 npm install
@@ -75,10 +75,14 @@ npm install
 - DISCORD_TOKEN=tu_token_aqui
 - FFMPEG_PATH=ruta/a/ffmpeg
 
-4. **Crea un bot y dale permisos**
-Ingresa al **Discord Developer Portal**, crea una aplicación, añade un bot y copia su token. Luego, invítalo a tu servidor con los permisos adecuados (audio, comandos, etc.). 
+4. **Crea un bot y dale permisos:**
+- Ve al **Discord Developer Portal**.
+- Crea una nueva aplicación.
+- Añade un bot a la aplicación y copia su token.
+- Invita el bot a tu servidor con los permisos necesarios (audio, comandos, etc.).
 
 4. **Ejecuta el bot:**
-node index.js
+- node deploy-commands.js
+- node index.js
 
 ¡Y listo! Usá el comando /play en Discord para disfrutar. 🚀
