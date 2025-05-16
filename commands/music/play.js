@@ -5,9 +5,8 @@ const { downloadSong } = require('./helpers/downloadSong');
 const { downloadsMetadata } = require('./helpers/downloadMetadata');
 const { isURL } = require('./helpers/isUrl');
 const { findSong } = require('./helpers/findSong');
+const { connectToChannel, getConnection, destroyConnection } = require('./helpers/voiceManager');
 require('dotenv').config();
-
-
 
 
 module.exports = {
@@ -22,22 +21,22 @@ module.exports = {
     async execute(interaction) {
 
         //* Función para no repetir el mismo codigo constantemente.
-        async function connectionVoice(path) {
-            const connection = joinVoiceChannel({
-                channelId: interaction.member.voice.channel.id,
-                guildId: interaction.guild.id,
-                adapterCreator: interaction.guild.voiceAdapterCreator,
-            });
+        // async function connectionVoice(path) {
+        //     const connection = joinVoiceChannel({
+        //         channelId: interaction.member.voice.channel.id,
+        //         guildId: interaction.guild.id,
+        //         adapterCreator: interaction.guild.voiceAdapterCreator,
+        //     });
         
-            const player = createAudioPlayer();
-            const resource = createAudioResource(path.path);
+        //     const player = createAudioPlayer();
+        //     const resource = createAudioResource(path.path);
         
-            player.play(resource);
-            connection.subscribe(player);
-            await interaction.editReply(`:arrow_forward: Reproduciendo: **[${path.title}]** ¡Disfrútala! :leaves:`);
+        //     player.play(resource);
+        //     connection.subscribe(player);
+        //     await interaction.editReply(`:arrow_forward: Reproduciendo: **[${path.title}]** ¡Disfrútala! :leaves:`);
             
-            player.on(AudioPlayerStatus.Idle, () => { connection.destroy(); });
-        }
+        //     player.on(AudioPlayerStatus.Idle, () => { connection.destroy(); });
+        // }
 
         const song = interaction.options.getString('url');
 
@@ -82,7 +81,7 @@ module.exports = {
                     searchName = await searchSong(songName);
                     filePath = await findSong(searchName.title);
 
-                    connectionVoice(filePath);
+                    //connectionVoice(filePath);
                 }
 
             } else {
@@ -91,8 +90,18 @@ module.exports = {
 
                 if (!filePath) {
                     await interaction.followUp(`:thinking: Aún no la tengo... Pero si me das el link, la bajo y la guardo para la próxima. :inbox_tray:`);
-                } else {                
-                    connectionVoice(filePath);
+                } else {        
+                    //connectionVoice(filePath);        
+                    const connection = connectToChannel(interaction);
+
+                    const player = createAudioPlayer();
+                    const resource = createAudioResource(filePath.path);
+                
+                    player.play(resource);
+                    connection.subscribe(player);
+                    
+                    await interaction.editReply(`:arrow_forward: Reproduciendo: **[${filePath.title}]** ¡Disfrútala! :leaves:`);
+                    player.on(AudioPlayerStatus.Idle, () => { connection.destroy(); });
                 }
             }
         } catch (error) {

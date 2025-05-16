@@ -11,6 +11,8 @@ const downloadSong = async (link) => {
             return false;
         }
 
+        //! AQUI CREO QUE TIENE QUE HABER UN CAMBIO CON EL TITLE YA QUE ANTES YA SE MODIFICA EL TEXTO.
+
         const info = await playdl.video_basic_info(link);
         const title = info.video_details.title.replace(/[<>:"/\\|?*]/g, ''); //* limpia nombre para evitar errores de archivo
 

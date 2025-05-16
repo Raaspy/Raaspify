@@ -11,14 +11,30 @@ const downloadsMetadata = async(link) => {
         const url = data.video_details.url;
         const duration = data.video_details.durationInSec;
 
+        
+
+        function cleanTitle(title) {
+            return title
+                .replace(/\(.*?\)/g, '')            // elimina todo lo que está entre paréntesis
+                .replace(/\[.*?\]/g, '')            // elimina todo lo que está entre corchetes
+                .replace(/official|oficial|video|letra|lyrics?/gi, '')  // elimina palabras comunes innecesarias
+                .replace(/HD|4K|MV/gi, '')          // elimina resoluciones y etiquetas de música
+                .replace(/\s*[-–—]\s*/g, ' - ')     // normaliza guiones con espacios
+                .replace(/\s+/g, ' ')               // reemplaza múltiples espacios por uno
+                .replace(/^\s+|\s+$/g, '')          // elimina espacios al inicio y final
+        }
+        
+        let cleanSong = cleanTitle(title);
+
         const videoData = {
             id,
-            title,
+            cleanSong, //* Aqui va la variable del titulo que modificamos.
             url,
             duration
         };
 
         let dataFile = {};
+        
         try {
             dataFile = JSON.parse(fs.readFileSync(DB_PATH, 'utf8'));
         } catch (err) {

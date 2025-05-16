@@ -18,7 +18,7 @@ function isURL(link) {
 
 /*
 !IMPORTANTE!
-* Desde consulta se registra un error que viene de esta función, pero es porque (new URL) no puede procesar un texto que no sea URL.
+* Desde la consulta se registra un error que viene de esta función, pero es porque (new URL) no puede procesar un texto que no sea URL.
 * Por lo tanto, este se salta el IF de comparación y se va directo al Catch. Pero si se entrega una URL entra tranquilamente.
 */
 
