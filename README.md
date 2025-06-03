@@ -66,15 +66,19 @@ Si deseas clonar el repositorio y usarlo en tu servidor, estás libre de hacerlo
 ## 🔧 Instalación y Uso
 
 1. **Clona el repositorio:**
+```
 git clone https://github.com/Raaspy/Raaspify.git
+```
 
 2. **Instala las dependencias:**
+```
 npm install
-
+```
 3. **Agrega un archivo .env con:**
-- DISCORD_TOKEN=tu_token_aqui
-- FFMPEG_PATH=ruta/a/ffmpeg
-
+```
+DISCORD_TOKEN=tu_token_aqui
+FFMPEG_PATH=ruta/a/ffmpeg
+```
 4. **Crea un bot y dale permisos:**
 - Ve al **Discord Developer Portal**.
 - Crea una nueva aplicación.
@@ -82,7 +86,10 @@ npm install
 - Invita el bot a tu servidor con los permisos necesarios (audio, comandos, etc.).
 
 4. **Ejecuta el bot:**
-- node deploy-commands.js
-- node index.js
-
-¡Y listo! Usá el comando /play en Discord para disfrutar. 🚀
+```
+node deploy-commands.js
+```
+```
+node index.js
+```
+¡Y listo! Usá el comando `/play` en Discord para disfrutar. 🚀
