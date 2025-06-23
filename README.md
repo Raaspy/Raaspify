@@ -2,8 +2,9 @@
 
 > **“Donde hay música, hay Raaspify. 🎶”**
 
-**Raaspify** es un bot musical desarrollado como proyecto personal, ideal para reforzar habilidades en **JavaScript** y **Node.js**.  
-Permite reproducir canciones mediante **URLs o texto**, y si no encuentra una canción, la **descarga automáticamente y la guarda** para futuras sesiones.
+**Raaspify** es un bot musical desarrollado como proyecto personal, ideal para reforzar habilidades en **JavaScript** y **Node.js**.
+
+Permite reproducir canciones mediante **URLs o texto**, y si no encuentra una canción, **intenta descargarla** y la **guarda** para futuras sesiones.
 
 ---
 
@@ -20,8 +21,9 @@ Permite reproducir canciones mediante **URLs o texto**, y si no encuentra una ca
 
 ## ⚙️ Estado del Proyecto
 
-✅ **Raaspify** está completamente funcional y en uso activo en un servidor privado.  
-Se encuentra en constante desarrollo, y está disponible para compartirlo con la comunidad en GitHub y con amigos.
+🧪 **Raaspify** es una **plataforma backend experimental**, en desarrollo activo.
+
+🛠️ Actualmente funciona en un entorno privado, pero todavía hay varias funciones pendientes por implementar y pulir. Está **disponible para compartirlo** con la comunidad en **GitHub** y con amigos.
 
 ---
 
