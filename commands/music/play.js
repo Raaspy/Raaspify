@@ -1,11 +1,12 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { AudioPlayerStatus, joinVoiceChannel, createAudioPlayer, createAudioResource } = require('@discordjs/voice');
-const { searchSong } = require('./helpers/searchSong');
-const { downloadSong } = require('./helpers/downloadSong');
-const { downloadsMetadata } = require('./helpers/downloadMetadata');
-const { isURL } = require('./helpers/isUrl');
-const { findSong } = require('./helpers/findSong');
-const { connectToChannel, getConnection, destroyConnection } = require('./helpers/voiceManager');
+const { AudioPlayerStatus, StreamType, joinVoiceChannel, createAudioPlayer, createAudioResource } = require('@discordjs/voice');
+const { audio, search, utils } = require('./helpers');
+// const { downloadSong } = require('./helpers/downloadSong');
+// const { downloadsMetadata } = require('./helpers/downloadMetadata');
+// const { isURL } = require('./helpers/isUrl');
+// const { findSong } = require('./helpers/findSong');
+const connectToChannel = require('./helpers/utils/voiceManager');//! REVISAR CONEXION MODULOS
+const fs = require('fs');
 require('dotenv').config();
 
 
@@ -47,18 +48,18 @@ module.exports = {
         await interaction.deferReply(); //* Da tiempo para que el bot inicie tranquilamente.
         
         try {
-            const songName = isURL(song);
+            const songName = search.isURL(song);
 
             if (songName) {
-                const isSongSaved = await searchSong(songName);
+                const isSongSaved = await search.searchSong(songName);
 
                 if (!isSongSaved) {
-                    const existingSongData = await downloadSong(songName);
+                    const existingSongData = await audio.downloadSong(songName);
 
                     if (existingSongData) {
 
                         try {
-                            const metadataSaved = await downloadsMetadata(songName);
+                            const metadataSaved = await audio.downloadsMetadata(songName);
             
                             if (metadataSaved) {
                                 await interaction.editReply(`:white_check_mark: **[${existingSongData}]** - Está oficialmente en mis archivos. Dale **/play** para oírla. :file_folder::notes:`);
@@ -78,15 +79,16 @@ module.exports = {
                 } else {
 
                     //* ESTA ES LA ZONA QUE REPRODUCE POR URL
-                    searchName = await searchSong(songName);
-                    filePath = await findSong(searchName.title);
+                    searchName = await search.searchSong(songName);
+                    filePath = await search.findSong(searchName.title);
 
                     //connectionVoice(filePath);
                 }
 
             } else {
                 //* ESTA ES LA ZONA QUE REPRODUCE POR NOMBRE
-                const filePath = await findSong(song);
+                const filePath = await search.findSong(song);
+                console.log("aAa", filePath)
 
                 if (!filePath) {
                     await interaction.followUp(`:thinking: Aún no la tengo... Pero si me das el link, la bajo y la guardo para la próxima. :inbox_tray:`);
@@ -95,13 +97,14 @@ module.exports = {
                     const connection = connectToChannel(interaction);
 
                     const player = createAudioPlayer();
-                    const resource = createAudioResource(filePath.path);
+                    //const resource = createAudioResource(filePath.path);
+                    const resourceOpus = createAudioResource(filePath.path, { inputType: StreamType.Opus });
                 
-                    player.play(resource);
+                    player.play(resourceOpus);
                     connection.subscribe(player);
                     
                     await interaction.editReply(`:arrow_forward: Reproduciendo: **[${filePath.title}]** ¡Disfrútala! :leaves:`);
-                    player.on(AudioPlayerStatus.Idle, () => { connection.destroy(); });
+                    player.on(AudioPlayerStatus.Idle, () => { connection.destroy(); }); //! REVISAR ESTO LUEGO
                 }
             }
         } catch (error) {

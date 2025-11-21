@@ -26,4 +26,4 @@ function destroyConnection(guildId) {
     }
 }
 
-module.exports = { connectToChannel, getConnection, destroyConnection }
+module.exports =  connectToChannel, getConnection, destroyConnection

@@ -34,4 +34,4 @@ const searchSong = async(link) => {
     }
 };
 
-module.exports = { searchSong };
+module.exports = searchSong;

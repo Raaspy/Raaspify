@@ -22,4 +22,4 @@ function isURL(link) {
 * Por lo tanto, este se salta el IF de comparación y se va directo al Catch. Pero si se entrega una URL entra tranquilamente.
 */
 
-module.exports = { isURL };
+module.exports = isURL;

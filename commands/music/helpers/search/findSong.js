@@ -4,7 +4,7 @@ const dirPath = 'downloads';
 
 function findSong(name) {
     try {
-        const listSongs = fs.readdirSync(dirPath).filter(file => file.endsWith('.mp3'));
+        const listSongs = fs.readdirSync(dirPath).filter(file => file.endsWith('.opus'));
 
         const clean = (str) => str
             .toLowerCase()
@@ -21,7 +21,7 @@ function findSong(name) {
 
         return {
             path: songName,
-            title: songClean.replace('.mp3', '')
+            title: songClean.replace('.opus', '')
         };
 
     } catch (error) {
@@ -30,4 +30,4 @@ function findSong(name) {
     }
 }
 
-module.exports = { findSong };
+module.exports = findSong;
